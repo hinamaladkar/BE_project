@@ -10,6 +10,7 @@ symbols = []
 for row in range(12, c.nrows):
     symbols.append(str(c.cell(row, 2).value))
 
-r = requests.get('https://www.google.com/finance/historical?q=NSE:' + symbols[4])
-soup = BeautifulSoup(r.content, 'lxml')
-print(soup.find_all('input', {'name': 'cid'})[0]["value"])
+for symbol in symbols:
+    r = requests.get('https://www.google.com/finance/historical?q=NSE:' + symbol)
+    soup = BeautifulSoup(r.content, 'lxml')
+    print(soup.find_all('input', {'name': 'cid'})[0]["value"])
