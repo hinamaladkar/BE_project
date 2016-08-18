@@ -14,4 +14,6 @@ for row in range(12, c.nrows):
 for symbol in symbols:
     r = requests.get('https://www.google.com/finance/historical?q=NSE:' + symbol)
     soup = BeautifulSoup(r.content, 'lxml')
+    with .....
+        f.write(symbol + ',' + soup.find_all('input', {'name': 'cid'})[0]["value"] + ',' + '\n')
     print(soup.find_all('input', {'name': 'cid'})[0]["value"])
