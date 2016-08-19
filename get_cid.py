@@ -1,3 +1,4 @@
+#inti
 import requests
 import xlrd
 from bs4 import BeautifulSoup
@@ -13,6 +14,8 @@ for row in range(12, c.nrows):
 for symbol in symbols:
     r = requests.get('https://www.google.com/finance/historical?cid='+symbol+'&startdate=Jan+01%2C+2010&enddate=Aug+18%2C+2016&num=30&ei=ilC1V6HlPIasuASP9Y7gAQ')
     soup = BeautifulSoup(r.content, 'lxml')
+    with open('output.txt','a') as f:
+        f.write(symbol + ',' + soup.find_all('input', {'name': 'cid'})[0]["value"] + ',' + '\n')
     print(soup.find_all('input', {'name': 'cid'})[0]["value"])
     var = soup.find_all("script")[8].string
     a = re.compile('google.finance.applyPagination\((.*)\'http', re.DOTALL)
