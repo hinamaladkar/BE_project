@@ -14,7 +14,7 @@ with requests.session() as s:
     all_rows = table.find_all("tr")
     #while True:
         #start += 30
-    soup = BeautifulSoup(s.get(url.format(start)).content, "html.parser")
+    soup = BeautifulSoup(s.get(url.format(start)).content, "lxml")
     table = soup.select_one("table.gf-table.historical_price")
     '''if not table:
         break'''
@@ -25,7 +25,12 @@ with requests.session() as s:
         cells = row.find_all("td")
     print(len(cells))
     try:
-            row_list.extend([str(cells[0].text.replace('\n','')), str(cells[1].text.replace('\n','')), str(cells[2].text.replace('\n','')), str(cells[3].text.replace('\n','')), str(cells[4].text.replace('\n','')), str(cells[5].text.replace('\n',''))])
+            row_list.extend([str(cells[0].text.replace('\n','')), \
+                             str(cells[1].text.replace('\n','')), \
+                             str(cells[2].text.replace('\n','')), \
+                             str(cells[3].text.replace('\n','')), \
+                             str(cells[4].text.replace('\n','')), \
+                             str(cells[5].text.replace('\n',''))])
     except:
             pass
     rows_list.append(row_list)
