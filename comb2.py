@@ -5,6 +5,7 @@ import pandas as pd
 
 symbols = []
 cid = []
+sym = []
 page = 0
 
 df = pd.read_csv(r'C:\Users\Vaishu_2\Desktop\output1.csv', names = ['symbols','cid'])
@@ -13,6 +14,10 @@ for s in df.symbols:
 
 for c in df.cid:
 	cid.append(c)
+
+for i in range(0,25):
+	sym.append[i]
+	
 
 print(symbols)
 for symbol in symbols:
@@ -53,5 +58,5 @@ for symbol in symbols:
                     data = csv.writer(fu)
                     for row in rows_list:
                         data.writerow(row)
-                start += 30
-                #print(start)
+            start += 30
+            #print(start)
